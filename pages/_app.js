@@ -11,8 +11,8 @@ function App({ Component, pageProps }) {
             <link rel='icon' type='image/png' href='/images/icon_favicon32x32.png' sizes='32x32' />
 
             <link rel="stylesheet" href="./style.css" />
-            <link rel="preload" as="font" href="/fonts/SplineSans-Medium.woff2" crossorigin="" />
-            <link rel="preload" as="font" href="/fonts/SplineSans-Regular.woff2" crossorigin="" />
+            {/* <link rel="preload" as="font" href="/fonts/SplineSans-Medium.woff2" crossorigin="" />
+            <link rel="preload" as="font" href="/fonts/SplineSans-Regular.woff2" crossorigin="" /> */}
 
 
         </Head>

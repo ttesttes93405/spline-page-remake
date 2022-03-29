@@ -1,4 +1,16 @@
 
+@font-face {
+    font-family: SplineSans;
+    src: url("/fonts/SplineSans-Regular.woff2") format("woff");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: SplineSans;
+    src: url("/fonts/SplineSans-Medium.woff2") format("woff");
+    font-weight: bold;
+}
+
 :root {
     --color-bg: #121316;
     --color-bg-transparent: hsla(0,0%,7%,0);
@@ -28,14 +40,11 @@
     --color-white-080: hsla(0,0%,100%,0.8);
 }
 
-@font-face {
-    font-family: SplineSans;
-    src: url("http://localhost:3000/fonts/SplineSans-Medium.woff") format("woff");
-}
 
 body, html {
     background-color: var(--color-bg);
     font-family: SplineSans, system-ui, -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 *, ::after, ::before {

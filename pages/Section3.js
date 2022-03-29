@@ -23,6 +23,7 @@ const CardContainer = styled.ul`
     justify-content: center;
     grid-gap: 1.5rem;
     gap: 1.5rem;
+    margin: 0;
 
     li {
         display: list-item;
@@ -47,6 +48,18 @@ const CardContainer = styled.ul`
 
         div {
             padding: 1.5rem 2rem;
+            background-color: #181a1d;
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: -3px;   
+                height: 3px;
+                background-color: #181a1d;
+            }
         }
 
         h3 {

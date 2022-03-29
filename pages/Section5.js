@@ -11,7 +11,7 @@ function Section5() {
         <p>
             Get your 3D scenes inside your web projects using simple embed code/snippets.
         </p>
-        <Spline scene="/sences/scene_cube.spline" style={{ width: 1080 }} />
+        <Spline scene="/sences/scene_cube.spline" style={{ width: 1080 , overflow: 'hidden'}} />
     </section>)
 }
 

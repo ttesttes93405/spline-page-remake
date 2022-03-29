@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 
 const Spline = dynamic(() => import('@splinetool/react-spline'), {
-  ssr: false,
+    ssr: false,
 });
 
 const Section = styled.section`
@@ -12,6 +12,42 @@ const Section = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: -webkit-linear-gradient(bottom,var(--color-bg),var(--color-bg-transparent));
+        background: linear-gradient(0deg,var(--color-bg),var(--color-bg-transparent));
+        z-index: 3;
+        height: 200px;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: -webkit-linear-gradient(bottom,var(--color-bg),var(--color-bg-transparent));
+        background: linear-gradient(0deg,var(--color-bg),var(--color-bg-transparent));
+        z-index: 3;
+        height: 300px;
+    }
+
+`;
+
+const TopContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    pointer-events: none;
+    align-items: center;
+    justify-content: center;
+    top: 15%;
 `;
 
 const Title = styled.h1`
@@ -20,6 +56,7 @@ const Title = styled.h1`
     text-align: center;
     color: var(--color-text-main);
     font-weight: bold;
+    margin: auto auto 1.6875rem;
     
 `;
 
@@ -32,6 +69,8 @@ const OpenAppButton = styled.a`
 `;
 
 const ControlTip = styled.div`
+    display: flex;
+    align-items: center;
     position: absolute;
     bottom: 15%;
     border-radius: 2rem;
@@ -42,14 +81,17 @@ const ControlTip = styled.div`
     padding: 18px 30px;
     box-sizing: border-box;
     pointer-events: none;
+    font-size: 500;
 
 
 `;
 
 function Section1() {
     return (<Section>
-        <Title>Spline, a place to design and collaborate in 3D.</Title>
-        <OpenAppButton href="https://app.spline.design">Open App</OpenAppButton>
+        <TopContainer>
+            <Title>Spline, a place to design and collaborate in 3D.</Title>
+            <OpenAppButton href="https://app.spline.design">Open App</OpenAppButton>
+        </TopContainer>
         <ControlTip>Press and drag to orbit</ControlTip>
         <Spline scene="/sences/scene_rabbit.spline" />
     </Section>)

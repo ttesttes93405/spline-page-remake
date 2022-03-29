@@ -1,5 +1,16 @@
+
+import styled from 'styled-components';
+
+const HeaderContainer = styled.header`
+    position: fixed;
+    top: 2rem;
+    left: 0;
+    right: 0;
+    z-index: 10;
+`;
+
 function Header() {
-    return (<header>
+    return (<HeaderContainer>
         <nav>
             <ul>
                 <li>
@@ -23,7 +34,7 @@ function Header() {
                 </li>
             </ul>
         </nav>
-    </header>)
+    </HeaderContainer>)
 }
 
 export default Header
