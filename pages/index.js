@@ -16,13 +16,6 @@ function App() {
 
     return (<>
 
-        <Head>
-            <title>Spline - Design tool for 3D web experiences</title>
-            <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-            <link rel='icon' type='image/png' href='/images/icon_favicon16x16.png' sizes='16x16' />
-            <link rel='icon' type='image/png' href='/images/icon_favicon32x32.png' sizes='32x32' />
-        </Head>
-
         <Header />
         <main>
             <Section1 />
