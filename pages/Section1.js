@@ -17,7 +17,7 @@ const Section = styled.section`
     &::before {
         content: "";
         position: absolute;
-        bottom: 0;
+        bottom: -2px;
         right: 0;
         left: 0;
         background: -webkit-linear-gradient(bottom,var(--color-bg),var(--color-bg-transparent));
@@ -29,7 +29,7 @@ const Section = styled.section`
     &::after {
         content: "";
         position: absolute;
-        bottom: 0;
+        bottom: -2px;
         right: 0;
         left: 0;
         background: -webkit-linear-gradient(bottom,var(--color-bg),var(--color-bg-transparent));

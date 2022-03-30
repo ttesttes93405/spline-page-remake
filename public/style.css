@@ -11,6 +11,11 @@
     font-weight: bold;
 }
 
+@font-face {
+    font-family: SplineSansMono;
+    src: url("/fonts/SplineSansMono-Regular.woff2") format("woff");
+}
+
 :root {
     --color-bg: #121316;
     --color-bg-transparent: hsla(0,0%,7%,0);
