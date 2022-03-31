@@ -390,6 +390,7 @@ function Section5() {
                 <FrameworkListContent>
                     {
                         frameworkData.map((d, index) => (<FrameworkButton
+                            key={index}
                             className={classNames({ 'selected': selectIndex === index })}
                             onClick={() => { setSelectIndex(index) }}
                         >

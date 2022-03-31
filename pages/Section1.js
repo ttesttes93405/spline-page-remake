@@ -48,6 +48,7 @@ const TopContainer = styled.div`
     align-items: center;
     justify-content: center;
     top: 15%;
+    z-index: 3;
 `;
 
 const Title = styled.h1`
@@ -66,6 +67,11 @@ const OpenAppButton = styled.a`
     color: var(--color-white);
     text-decoration: none;
     border-radius: 0.75rem;
+    pointer-events: auto;
+
+    &:hover {
+        background-color: var(--color-blue-dark);
+    }
 `;
 
 const ControlTip = styled.div`

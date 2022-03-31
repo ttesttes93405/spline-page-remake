@@ -30,6 +30,12 @@ const Nav = styled.nav`
     align-items: center;
 `;
 
+const Logo = styled.a`    
+    display: block;
+    height: 32px;
+`;
+
+
 const NavList = styled.li`
     list-style-type: none;
     display: flex;
@@ -99,9 +105,9 @@ function Header() {
         <Nav>
             <NavList>
                 <li>
-                    <a href='/'>
+                    <Logo href='/'>
                         <img src='/images/spline_logo_32x32.png' />
-                    </a>
+                    </Logo>
                 </li>
                 <LinkButtonList>
                     <li><LinkButton href="/#features">Features</LinkButton></li>

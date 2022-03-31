@@ -116,7 +116,7 @@ function Section3() {
             A solid set of features that will help you create your best designs.
         </Description>
         <CardContainer>
-            {cardData.map(c => (<li>
+            {cardData.map((c, index) => (<li key={index}>
                 <img src={c.pic} />
                 <div>
                     <h3>{c.title}</h3>
