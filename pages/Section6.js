@@ -2,7 +2,9 @@ import styled from "styled-components";
 import Title from "./components/Title";
 import Description from "./components/Description";
 import classNames from "classnames";
-
+import { ReactSVG } from 'react-svg'
+// import { ReactComponent as DownloadIcon } from '../src/downloadIcon.svg'
+// import { ReactComponent as BrowerIcon } from '../src/browerIcon.svg'
 
 const Section = styled.section`
     position: relative;
@@ -46,6 +48,11 @@ const DownloadButton = styled.a`
         }
     }
 
+    .svg div {
+        display: flex;
+        justify-content: center;
+    }
+
     svg {
         margin-right: 0.5rem;
         opacity: 0.6;
@@ -70,34 +77,33 @@ const DownloadButton = styled.a`
     }
 `;
 
-const downloadIcon = (<svg width="16" height="16" viewBox="0 0 16 16" fill="none" id="download" ><path d="M7.9999 10.0001L5.17147 7.17169M7.9999 10.0001L10.8283 7.17169M7.9999 10.0001L7.99992 2.50004" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2.5 10.5V11.5C2.5 12.6046 3.39543 13.5 4.5 13.5H11.5C12.6046 13.5 13.5 12.6046 13.5 11.5V10.5" stroke="white" stroke-linecap="round"></path></svg>);
-const browerIcon = (<svg width="16" height="16" viewBox="0 0 16 16" fill="none" id="web"><circle cx="8" cy="8" r="6.5" stroke="white"></circle><path d="M2 8L14 8" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.5 8C10.5 9.8819 10.1721 11.5619 9.66175 12.7528C9.40618 13.3491 9.11471 13.7997 8.81652 14.094C8.52048 14.3862 8.24513 14.5 8 14.5C7.75487 14.5 7.47952 14.3862 7.18348 14.094C6.88529 13.7997 6.59382 13.3491 6.33825 12.7528C5.82788 11.5619 5.5 9.8819 5.5 8C5.5 6.1181 5.82788 4.43808 6.33825 3.24721C6.59382 2.65089 6.88529 2.20026 7.18348 1.90597C7.47952 1.6138 7.75487 1.5 8 1.5C8.24513 1.5 8.52048 1.6138 8.81652 1.90597C9.11471 2.20026 9.40618 2.65089 9.66175 3.24721C10.1721 4.43808 10.5 6.1181 10.5 8Z" stroke="white"></path></svg>);
-
+const DownloadIcon = (<ReactSVG className='svg' src='./src/downloadIcon.svg'/>);
+const BrowerIcon = (<ReactSVG className='svg' src='./src/browerIcon.svg'/>);
 
 const downloadData = [
     {
         url: 'https://app.spline.design',
-        icon: browerIcon,
+        icon: BrowerIcon,
         title: 'Browser',
     },
     {
         url: 'https://cdn.spline.design/_assets/Spline-0.9.0-arm64.osx_update.zip',
-        icon: downloadIcon,
+        icon: DownloadIcon,
         title: 'macOS (m1)',
     },
     {
         url: 'https://cdn.spline.design/_assets/Spline-0.9.0-x64.osx_update.zip',
-        icon: downloadIcon,
+        icon: DownloadIcon,
         title: 'macOS (intel)',
     },
     {
         url: 'https://cdn.spline.design/_assets/spline-0.5.1-x64-setup.zip',
-        icon: downloadIcon,
+        icon: DownloadIcon,
         title: 'Windows',
     },
     {
         url: 'https://cdn.spline.design/_assets/spline-0.5.1.linux.deb.zip',
-        icon: downloadIcon,
+        icon: DownloadIcon,
         title: 'Linux',
     },
 ];

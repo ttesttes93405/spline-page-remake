@@ -145,6 +145,9 @@ const FrameworkView = styled.div`
         bottom: 0;
         right: 0;
         left: 0;
+        width: 100%!important;
+        height: 100%!important;
+        object-fit: cover;
     }
 `;
 
@@ -360,9 +363,7 @@ function Section5() {
             return;
         }
 
-        console.log(spline);
-
-        const [width, height] = [1080, 512]
+        // console.log(spline);
 
     }, [spline]);
 

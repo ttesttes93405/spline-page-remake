@@ -96,7 +96,7 @@ function FooterSection2() {
     return (<Section>
         <SocialLinkList>
             {socialLinkData.map((d, index) => (<SocialLinkButton key={index} href={d.url} target='_blank'>
-                <span class='emoji'>{d.emoji}</span>
+                <span className='emoji'>{d.emoji}</span>
                 <span>{d.title}</span>
             </SocialLinkButton>))}
         </SocialLinkList>

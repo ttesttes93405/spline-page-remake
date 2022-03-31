@@ -12,6 +12,12 @@ const Section = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+    canvas {
+        width: 100%!important;
+        height: 100%!important;
+        object-fit: cover;
+    }
 
 
     &::before {

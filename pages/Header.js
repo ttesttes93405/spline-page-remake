@@ -36,12 +36,12 @@ const Logo = styled.a`
 `;
 
 
-const NavList = styled.li`
+const NavList = styled.ul`
     list-style-type: none;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 0.5rem;
     padding: 0;
     margin: 0;
@@ -109,12 +109,14 @@ function Header() {
                         <img src='/images/spline_logo_32x32.png' />
                     </Logo>
                 </li>
-                <LinkButtonList>
-                    <li><LinkButton href="/#features">Features</LinkButton></li>
-                    <li><LinkButton href="https://discord.gg/M9hNDMqvnw">Community</LinkButton></li>
-                    <li><LinkButton href="https://twitter.com/splinetool">Twitter</LinkButton></li>
-                    <li><LinkButton href="https://docs.spline.design/">Docs</LinkButton></li>
-                </LinkButtonList>
+                <li>
+                    <LinkButtonList>
+                        <li><LinkButton href="/#features">Features</LinkButton></li>
+                        <li><LinkButton href="https://discord.gg/M9hNDMqvnw">Community</LinkButton></li>
+                        <li><LinkButton href="https://twitter.com/splinetool">Twitter</LinkButton></li>
+                        <li><LinkButton href="https://docs.spline.design/">Docs</LinkButton></li>
+                    </LinkButtonList>
+                </li>
                 <li>
                     <RigthLinkList>
                         <li><DownloadButton href="#download">Download</DownloadButton></li>
