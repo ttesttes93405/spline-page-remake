@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Title from "./components/Title";
 import Description from "./components/Description";
+import { ReactSVG } from 'react-svg'
 
 
 const Section = styled.section`
@@ -36,11 +37,13 @@ const CardContainer = styled.ul`
 
         transition: background-color .2s ease;
 
-        img {
-            display: block;
+        .icon-container {
+            display: flex;
             width: 4.5rem;
             height: 4.5rem;
             margin: auto auto 1.5rem;
+            justify-content: center;
+            align-items: center;
             
             border-radius: 1rem;
             color: var(--color-white-040);
@@ -48,10 +51,18 @@ const CardContainer = styled.ul`
 
             object-fit: cover;
             border: none;
+
+            div {
+                display: flex;
+            }
         }
 
         &:hover{
             background-color: var(--color-btn-bg-highlight);
+
+            svg {                
+                color: var(--color-purple-bright);
+            }
         }
 
         div {
@@ -77,55 +88,53 @@ const CardContainer = styled.ul`
 
 const cardData = [
     {
-        "pic": "",
-        "title": "Teams, Projects & Folders",
-        "desc": "Create teams and organize your files in folders and projects."
+        icon: "./src/folders.svg",
+        title: "Teams, Projects & Folders",
+        desc: "Create teams and organize your files in folders and projects."
     },
     {
-        "pic": "",
-        "title": "Image Exports",
-        "desc": "Save your composition in high resolution JPGs & PNGs."
+        icon: "./src/image.svg",
+        title: "Image Exports",
+        desc: "Save your composition in high resolution JPGs & PNGs."
     },
     {
-        "pic": "",
-        "title": "Polygonal Modeling",
-        "desc": "Model any type of objects with a range of different tools."
+        icon: "./src/vertex.svg",
+        title: "Polygonal Modeling",
+        desc: "Model any type of objects with a range of different tools."
     },
     {
-        "pic": "",
-        "title": "React Export",
-        "desc": "Quickly integrate your scene into your React projects."
+        icon: "./src/code.svg",
+        title: "React Export",
+        desc: "Quickly integrate your scene into your React projects."
     },
     {
-        "pic": "",
-        "title": "Material Assets",
-        "desc": "Stay organized with assets, including textures and colors."
+        icon: "./src/sphere.svg",
+        title: "Material Assets",
+        desc: "Stay organized with assets, including textures and colors."
     },
     {
-        "pic": "",
-        "title": "Templates Library",
-        "desc": "A repository of scenes, templates, and objects ready to use."
+        icon: "./src/template-library.svg",
+        title: "Templates Library",
+        desc: "A repository of scenes, templates, and objects ready to use."
     },
     {
-        "pic": "",
-        "title": "Vector Editing",
-        "desc": "The vector tool you already know but in the 3D space."
+        icon: "./src/pen.svg",
+        title: "Vector Editing",
+        desc: "The vector tool you already know but in the 3D space."
     },
     {
-        "pic": "",
-        "title": "Camera Controls",
-        "desc": "Use cameras to control your scene composition."
+        icon: "./src/camera.svg",
+        title: "Camera Controls",
+        desc: "Use cameras to control your scene composition."
     },
     {
-        "pic": "",
-        "title": "Web Events",
-        "desc": "Create animations and interactions with events."
+        icon: "./src/events.svg",
+        title: "Web Events",
+        desc: "Create animations and interactions with events."
     }
 ];
 
 function Section4() {
-
-
     return (<Section>
         <Title>And there is more!</Title>
         <Description>
@@ -133,7 +142,9 @@ function Section4() {
         </Description>
         <CardContainer>
             {cardData.map((c, index) => (<li key={index}>
-                <img src={c.pic} />
+                <div className='icon-container'>
+                    <ReactSVG src={c.icon} />
+                </div>
                 <div>
                     <h3>{c.title}</h3>
                     <p>{c.desc}</p>

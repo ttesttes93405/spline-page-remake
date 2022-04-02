@@ -1,5 +1,7 @@
 
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import classNames from 'classnames';
 
 const HeaderContainer = styled.header`
     position: fixed;
@@ -14,6 +16,11 @@ const HeaderContainer = styled.header`
     a {
         text-decoration: none;
     }
+
+    .width100percent {
+        width: 100%;
+    }
+
 `;
 
 
@@ -28,6 +35,11 @@ const Nav = styled.nav`
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background-color 0.2s ease;
+
+    &.background-light {
+        background-color: rgba(31,32,35,0.8);
+    }
 `;
 
 const Logo = styled.a`    
@@ -35,22 +47,17 @@ const Logo = styled.a`
     height: 32px;
 `;
 
-
 const NavList = styled.ul`
     list-style-type: none;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: center;
     gap: 0.5rem;
     padding: 0;
     margin: 0;
     width: 100%;
-`;
-
-const LinkButton = styled.a`
-    padding: 0 0.625rem;
-    color: var(--color-text-navigation);
 `;
 
 const LinkButtonList = styled.ul`
@@ -66,6 +73,16 @@ const LinkButtonList = styled.ul`
     flex-grow: 1;
     padding: 0.75rem;
     box-sizing: border-box;
+`;
+
+const LinkButton = styled.a`
+    padding: 0 0.625rem;
+    color: var(--color-text-navigation);
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: var(--color-white);
+    }
 `;
 
 const RigthLinkList = styled.ul`
@@ -87,6 +104,11 @@ const DownloadButton = styled.a`
     border: 1px solid var(--color-white-005);
     white-space: nowrap;
     box-sizing: border-box;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: var(--color-white);
+    }
 `;
 
 const OpenAppButton = styled.a`
@@ -97,19 +119,63 @@ const OpenAppButton = styled.a`
     background-color: var(--color-white-005);
     white-space: nowrap;
     box-sizing: border-box;
+    transition: background-color 0.2s ease;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: var(--color-white);
+    }
+
+    &.open-app-button-light {        
+        color: #fff;
+        background-color: var(--color-blue);
+
+        &:hover {
+            background-color: var(--color-blue-dark);
+        }
+    }
 `;
 
 
 function Header() {
+
+
+    const [backgroundLight, setBackgroundLight] = useState(false);
+    const [openAppButtonLight, setOpenAppButtonLight] = useState(false);
+
+    useEffect(() => {
+
+        const handler = window.addEventListener('scroll', (e) => {
+
+            const backgroundLightTriggerPos = 5;
+            const isBackgroundLight = (document.body.scrollTop > backgroundLightTriggerPos || document.documentElement.scrollTop > backgroundLightTriggerPos)
+            setBackgroundLight(isBackgroundLight);
+            // console.log(isBackgroundLight)
+
+            const openAppButtonLightTriggerPos = window.innerHeight;
+            const isOpenAppButtonLight = (document.body.scrollTop > openAppButtonLightTriggerPos || document.documentElement.scrollTop > openAppButtonLightTriggerPos)
+            setOpenAppButtonLight(isOpenAppButtonLight);
+            // console.log(isOpenAppButtonLight)
+
+        });
+
+        return () => {
+            window.removeEventListener('scroll', handler);
+        }
+
+    });
+
+
+
     return (<HeaderContainer>
-        <Nav>
+        <Nav className={classNames({ 'background-light': backgroundLight })}>
             <NavList>
                 <li>
                     <Logo href='/'>
                         <img src='/images/spline_logo_32x32.png' />
                     </Logo>
                 </li>
-                <li>
+                <li className='width100percent'>
                     <LinkButtonList>
                         <li><LinkButton href="/#features">Features</LinkButton></li>
                         <li><LinkButton href="https://discord.gg/M9hNDMqvnw">Community</LinkButton></li>
@@ -120,12 +186,12 @@ function Header() {
                 <li>
                     <RigthLinkList>
                         <li><DownloadButton href="#download">Download</DownloadButton></li>
-                        <li><OpenAppButton href="https://app.spline.design">Open App</OpenAppButton></li>
+                        <li><OpenAppButton href="https://app.spline.design" className={classNames({ 'open-app-button-light': openAppButtonLight })}>Open App</OpenAppButton></li>
                     </RigthLinkList>
                 </li>
             </NavList>
         </Nav>
-    </HeaderContainer>)
+    </HeaderContainer >)
 }
 
 export default Header
