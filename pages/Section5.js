@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import styled from "styled-components";
 import Title from "./components/Title";
 import Description from "./components/Description";
+import { ReactSVG } from 'react-svg';
 
 
 const Section = styled.section`
@@ -47,6 +48,10 @@ const SnippetContainer = styled.div`
     margin: 16px;
     backdrop-filter: blur(2rem);
 
+    code {
+        display: block;
+        margin-bottom: 8px;
+    }
     
     .block {
         font-family: SplineSansMono;
@@ -134,6 +139,29 @@ const SnippetContainer = styled.div`
 
 `;
 
+const SnippetButtonContainer = styled.div`
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    margin: 0.625rem 0.75rem;
+    gap: 0.5rem;
+    flex-gap: 0.5rem;
+
+
+    button {
+        width: 5.3125rem;
+        height: 1.5rem;
+        border: none;
+
+        border-radius: 4px;
+        font-size: 0.625rem;
+        color: var(--color-white-040);
+        background-color: var(--color-panel-bg);
+    }
+`;
+
 const FrameworkView = styled.div`
     position: relative;
     border-radius: 1rem;
@@ -180,7 +208,7 @@ const FrameworkButton = styled.button`
     /* justify-content: center; */
     align-items: center;
 
-    img {
+    img, svg {
         width: 40px;
         height: 40px;
         margin-right: 0.75rem;
@@ -197,12 +225,11 @@ const FrameworkButton = styled.button`
     &.selected {
         background-color: rgba(255,255,255, 0.06);
 
-        img {            
+        img, svg {            
             background-color: var(--color-white-005);
         }
     }
 `;
-
 
 
 const Spline = dynamic(() => import('@splinetool/react-spline'), {
@@ -241,10 +268,11 @@ const iframeCodeEl = (<code className="block block-iframe" >
     <span className="token tag" >iframe</span>
     <span className="token tag punctuation" >&gt;</span>
 </code>);
+const iframeCodeCopyContent = `<iframe src='https://my.spline.design/cubeaxiswebsiteupdatedinprod-c7eb2ea95c5e22c50b14b5333ee86583/' frameborder='0' width='100%' height='100%'></iframe>`;
 
 const frameworkData = [
     {
-        icon: '',
+        icon: (<ReactSVG src='./src/htmljs.svg' />),
         title: 'HTML/JS',
         codeEl: (<code className="block block-html-js">
             <span className="token plain">https</span>
@@ -262,14 +290,16 @@ const frameworkData = [
             <span className="token plain">c7eb2ea95c5e22c50b14b5333ee86583</span>
             <span className="token operator" >/</span>
         </code>),
+        copyContent: `https://my.spline.design/cubeaxiswebsiteupdatedinprod-c7eb2ea95c5e22c50b14b5333ee86583/`,
     },
     {
-        icon: '',
+        icon: (<ReactSVG src='./src/webflow.svg' />),
         title: 'Webflow',
         codeEl: iframeCodeEl,
+        copyContent: iframeCodeCopyContent,
     },
     {
-        icon: '',
+        icon: (<ReactSVG src='./src/react.svg' />),
         title: 'React',
         codeEl: (
             <code className="block-react">
@@ -335,24 +365,41 @@ const frameworkData = [
                     <span className="token punctuation">{'}'}</span>
                 </div>
             </code>),
+        copyContent: `import Spline from '@splinetool/react-spline';
+
+export default function App() {
+    return (
+    <div>
+        <Spline 
+        scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline"
+        />
+    </div>
+    )
+}`,
     },
     {
-        icon: '',
+        icon: (<img src='https://spline.design/_next/static/chunks/images/typedream-d67d2587f93ffaa7b996cf17f5f32f69.png' />),
         title: 'Typedream',
         codeEl: iframeCodeEl,
+        copyContent: iframeCodeCopyContent,
     },
     {
-        icon: '',
+        icon: (<ReactSVG src='./src/wordpress.svg' />),
         title: 'Wordpress',
         codeEl: iframeCodeEl,
+        copyContent: iframeCodeCopyContent,
     },
 ]
 
+const copyToClipboard = async (text) => {
+    await navigator.clipboard.writeText(text);
+}
 
 function Section5() {
 
     const [selectIndex, setSelectIndex] = useState(0);
     const [spline, setSpline] = useState(null);
+    const [foldSnippet, setfFoldSnippet] = useState(false);
 
     function handleLoad(e) {
         setSpline(e);
@@ -384,7 +431,11 @@ function Section5() {
                 />
                 <DragTip>Drag the cube to interact with it</DragTip>
                 <SnippetContainer>
-                    {frameworkData[selectIndex].codeEl}
+                    {!foldSnippet && frameworkData[selectIndex].codeEl}
+                    <SnippetButtonContainer>
+                        <button onClick={()=>copyToClipboard(frameworkData[selectIndex].copyContent)}>Copy code</button>
+                        <button onClick={() => setfFoldSnippet(!foldSnippet)}>{foldSnippet ? 'Toggle code' : 'Hide code'}</button>
+                    </SnippetButtonContainer>
                 </SnippetContainer>
             </FrameworkView>
             <FrameworkList>
@@ -395,7 +446,7 @@ function Section5() {
                             className={classNames({ 'selected': selectIndex === index })}
                             onClick={() => { setSelectIndex(index) }}
                         >
-                            <img src={d.icon} />
+                            {d.icon}
                             <p>{d.title}</p>
                         </FrameworkButton>))
                     }
