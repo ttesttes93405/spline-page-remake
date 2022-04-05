@@ -33,7 +33,7 @@ const SocialLinkList = styled.div`
         grid-template-columns: repeat(5, 9.1875rem);
         grid-auto-rows: 4.75rem;
     }
-    @media (min-width: 780px){
+    @media (min-width: 780px) and (max-width: 820px){
         a:last-child {
             grid-column: 1/-1;
             width: 9.1875rem;

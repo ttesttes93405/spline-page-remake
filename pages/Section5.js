@@ -241,7 +241,10 @@ const FrameworkListContent = styled.div`
     display: grid;
     grid-gap: 0.5rem;
     grid-template-columns: repeat(5, 1fr);
-    width: 67.5rem;
+    
+    @media (max-width: 1080px) {
+        width: 67.5rem;
+    }
 `;
 
 const FrameworkButton = styled.button`
