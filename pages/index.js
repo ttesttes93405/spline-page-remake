@@ -8,8 +8,15 @@ import Section4 from './Section4';
 import Section5 from './Section5';
 import Section6 from './Section6';
 import 'normalize.css';
+import styled from 'styled-components';
 
-
+const Main = styled.main`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%
+`;
 
 
 function App() {
@@ -17,14 +24,14 @@ function App() {
     return (<>
 
         <Header />
-        <main>
+        <Main>
             <Section1 />
             <Section2 />
             <Section3 />
             <Section4 />
             <Section5 />
             <Section6 />
-        </main>
+        </Main>
         <Footer />
 
     </>)

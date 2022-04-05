@@ -20,9 +20,22 @@ const Section = styled.section`
 
 const ButtonList = styled.div`
     display: grid;
-    grid-template-columns: repeat(5, 12.6875rem);
-    grid-auto-rows: 12.625rem;
+    grid-auto-rows: 4rem;
+    grid-template-columns: 1fr;
+    justify-content: center;
     gap: 1rem;
+    width: 100%;
+    
+    @media (min-width: 780px){
+        grid-template-columns: 12.6875rem;
+    }
+
+    @media (min-width: 1080px){
+        grid-auto-rows: 12.625rem;
+        grid-template-columns: repeat(5, 12.6875rem);
+        
+    }
+    
 `;
 
 const DownloadButton = styled.a`

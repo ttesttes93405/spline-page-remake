@@ -17,13 +17,29 @@ const Section = styled.section`
 const SocialLinkList = styled.div`
     display: grid;
 
-    grid-template-columns: repeat(5, 9.1875rem);
-    grid-auto-rows: 4.75rem;
-    max-width: 50.0625rem;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 3.875rem;
+    width: 100%;
+    justify-content: center;
 
     grid-gap: 1rem;
     gap: 1rem;
 
+    @media (min-width: 780px){
+        grid-template-columns: repeat(2, 9.1875rem);
+    }
+    @media (min-width: 820px){
+        grid-template-columns: repeat(5, 9.1875rem);
+        grid-auto-rows: 4.75rem;
+    }
+    @media (min-width: 780px){
+        a:last-child {
+            grid-column: 1/-1;
+            width: 9.1875rem;
+            height: 100%;
+            margin: auto;
+        }
+    }
 `;
 
 const SocialLinkButton = styled.a`

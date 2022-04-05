@@ -18,9 +18,23 @@ const Section = styled.section`
 
 const ContactContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, 16.0625rem);
-    grid-auto-rows: 8.125rem;
-    gap: 1rem;
+    gap: 1rem;    
+    grid-template-columns: 1fr;
+    grid-auto-rows: 6.1875rem;
+    width: 100%;
+    justify-content: center;
+    
+    @media (min-width: 780px){
+        grid-template-columns: 16.0625rem;
+    }
+    @media (min-width: 820px){
+        grid-template-columns: repeat(3, 16.0625rem);
+        grid-auto-rows: 8.125rem;
+    }
+    @media (min-width: 1080px){
+        grid-template-columns: repeat(3, 16.0625rem);
+        grid-auto-rows: 8.125rem;
+    }
 `;
 
 const ContactButton = styled.a`
@@ -35,7 +49,7 @@ const ContactButton = styled.a`
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.2s ease;
-
+    
 
     &:hover {
         background-color: var(--color-btn-bg-highlight);

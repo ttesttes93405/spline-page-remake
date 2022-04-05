@@ -15,13 +15,18 @@ const Section = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1rem;
     padding-top: 7.5rem;
     padding-bottom: 3.5rem;
+
+    .svg div {
+        display: flex;
+    }
 
 `;
 
 const SplineFrame = styled.div`
-
+    width: 100%
 `;
 
 const DragTip = styled.div`
@@ -34,6 +39,33 @@ const DragTip = styled.div`
     background: #191a1ee0;
     backdrop-filter: blur(24px);
 `
+
+const RepoLinkContainer = styled.a`
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 0.5rem;
+    gap: 0.5rem;
+    font-family: SplineSansMono;
+    font-size: 11px;
+    border-radius: 32px;
+    padding: 8px 12px;
+    background-color: var(--color-panel-bg);
+    text-decoration: none;
+    color: var(--color-white-040);
+
+    svg, span {
+        display: flex;
+    }
+
+    &:hover {
+        color: var(--color-white-080);
+    }
+`;
 
 const SnippetContainer = styled.div`
     position: absolute;
@@ -150,15 +182,27 @@ const SnippetButtonContainer = styled.div`
     flex-gap: 0.5rem;
 
 
-    button {
+    a, button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 5.3125rem;
         height: 1.5rem;
         border: none;
+        text-decoration: none;
 
         border-radius: 4px;
         font-size: 0.625rem;
         color: var(--color-white-040);
         background-color: var(--color-panel-bg);
+
+        &:hover {            
+            color: var(--color-white-080);
+        }
+    }
+
+    a {
+        width: 1.5rem;
     }
 `;
 
@@ -168,30 +212,36 @@ const FrameworkView = styled.div`
     overflow: hidden;
 
     canvas {
-        position: absolute;
+        /* position: absolute;
         top: 0;
         bottom: 0;
         right: 0;
-        left: 0;
-        width: 100%!important;
-        height: 100%!important;
+        left: 0; */
+
+        display: flex;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 1080px!important;
+        height: 32rem!important;
         object-fit: cover;
+        aspect-ratio: 0.5;
     }
 `;
 
 const FrameworkList = styled.div`
+    margin: 0;
+    margin-top: 1rem;
     width: 100%;
     overflow: hidden;
     overflow-x: auto;
+    border-radius: 1rem;;
 `;
 
 const FrameworkListContent = styled.div`
-    margin: 0;
-    margin-top: 1rem;
     display: grid;
     grid-gap: 0.5rem;
     grid-template-columns: repeat(5, 1fr);
-    min-width: 100%;
+    width: 67.5rem;
 `;
 
 const FrameworkButton = styled.button`
@@ -199,6 +249,7 @@ const FrameworkButton = styled.button`
     border-radius: 1rem;
     padding: 1rem;
     color: var(--color-white-040);
+    width: 100%;
     
     background-color: rgba(255,255,255,0.03);
     transition: background-color 0.2s ease;
@@ -230,6 +281,7 @@ const FrameworkButton = styled.button`
         }
     }
 `;
+
 
 
 const Spline = dynamic(() => import('@splinetool/react-spline'), {
@@ -272,7 +324,7 @@ const iframeCodeCopyContent = `<iframe src='https://my.spline.design/cubeaxisweb
 
 const frameworkData = [
     {
-        icon: (<ReactSVG src='./src/htmljs.svg' />),
+        icon: (<ReactSVG className='svg' src='./src/htmljs.svg' />),
         title: 'HTML/JS',
         codeEl: (<code className="block block-html-js">
             <span className="token plain">https</span>
@@ -290,16 +342,20 @@ const frameworkData = [
             <span className="token plain">c7eb2ea95c5e22c50b14b5333ee86583</span>
             <span className="token operator" >/</span>
         </code>),
+        repoLinkEl: null,
+        codeSandBoxButtonEl: null,
         copyContent: `https://my.spline.design/cubeaxiswebsiteupdatedinprod-c7eb2ea95c5e22c50b14b5333ee86583/`,
     },
     {
-        icon: (<ReactSVG src='./src/webflow.svg' />),
+        icon: (<ReactSVG className='svg' src='./src/webflow.svg' />),
         title: 'Webflow',
         codeEl: iframeCodeEl,
+        repoLinkEl: null,
+        codeSandBoxButtonEl: null,
         copyContent: iframeCodeCopyContent,
     },
     {
-        icon: (<ReactSVG src='./src/react.svg' />),
+        icon: (<ReactSVG className='svg' src='./src/react.svg' />),
         title: 'React',
         codeEl: (
             <code className="block-react">
@@ -365,6 +421,14 @@ const frameworkData = [
                     <span className="token punctuation">{'}'}</span>
                 </div>
             </code>),
+        repoLinkEl: (<RepoLinkContainer href='https://github.com/splinetool/react-spline' target='_blank'>
+            <ReactSVG className='svg' src='./src/github.svg' />
+            <span>react-spline</span>
+            <ReactSVG className='svg' src='./src/arrow-out.svg' />
+        </RepoLinkContainer>),
+        codeSandBoxButtonEl: (<a href='https://codesandbox.io/s/sweet-rain-28pcxt?file=/src/App.js' target='_blank'>
+            <ReactSVG className='svg' src='./src/code-sand-box.svg' />
+        </a>),
         copyContent: `import Spline from '@splinetool/react-spline';
 
 export default function App() {
@@ -381,12 +445,16 @@ export default function App() {
         icon: (<img src='https://spline.design/_next/static/chunks/images/typedream-d67d2587f93ffaa7b996cf17f5f32f69.png' />),
         title: 'Typedream',
         codeEl: iframeCodeEl,
+        repoLinkEl: null,
+        codeSandBoxButtonEl: null,
         copyContent: iframeCodeCopyContent,
     },
     {
-        icon: (<ReactSVG src='./src/wordpress.svg' />),
+        icon: (<ReactSVG className='svg' src='./src/wordpress.svg' />),
         title: 'Wordpress',
         codeEl: iframeCodeEl,
+        repoLinkEl: null,
+        codeSandBoxButtonEl: null,
         copyContent: iframeCodeCopyContent,
     },
 ]
@@ -426,14 +494,15 @@ function Section5() {
             <FrameworkView>
                 <Spline
                     scene="/sences/scene_cube.spline"
-                    style={{ display: 'flex', width: 1080, height: 512, overflow: 'hidden' }}
                     onLoad={handleLoad}
                 />
                 <DragTip>Drag the cube to interact with it</DragTip>
+                {frameworkData[selectIndex].repoLinkEl}
                 <SnippetContainer>
                     {!foldSnippet && frameworkData[selectIndex].codeEl}
                     <SnippetButtonContainer>
-                        <button onClick={()=>copyToClipboard(frameworkData[selectIndex].copyContent)}>Copy code</button>
+                        {frameworkData[selectIndex].codeSandBoxButtonEl}
+                        <button onClick={() => copyToClipboard(frameworkData[selectIndex].copyContent)}>Copy code</button>
                         <button onClick={() => setfFoldSnippet(!foldSnippet)}>{foldSnippet ? 'Toggle code' : 'Hide code'}</button>
                     </SnippetButtonContainer>
                 </SnippetContainer>
