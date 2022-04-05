@@ -12,6 +12,7 @@ const Section = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1rem;
     padding-top: 7.5rem;
     padding-bottom: 3.5rem;
 

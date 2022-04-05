@@ -9,9 +9,7 @@ const Section = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* padding-top: 7.5rem;
-    padding-bottom: 3.5rem; */
-    padding: 0;
+    padding: 0 1rem;
     margin: 6.1875rem auto;
 
     p {

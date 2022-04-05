@@ -21,6 +21,7 @@ const ContactContainer = styled.div`
     gap: 1rem;    
     grid-template-columns: 1fr;
     grid-auto-rows: 6.1875rem;
+    padding: 0 1rem;
     width: 100%;
     justify-content: center;
     

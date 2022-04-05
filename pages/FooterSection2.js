@@ -21,6 +21,7 @@ const SocialLinkList = styled.div`
     grid-auto-rows: 3.875rem;
     width: 100%;
     justify-content: center;
+    padding: 0 1rem;
 
     grid-gap: 1rem;
     gap: 1rem;
