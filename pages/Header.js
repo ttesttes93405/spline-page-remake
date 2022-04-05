@@ -12,6 +12,7 @@ const HeaderContainer = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 1rem;
 
     a {
         text-decoration: none;
@@ -62,7 +63,7 @@ const NavList = styled.ul`
 
 const LinkButtonList = styled.ul`
     list-style-type: none;
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
@@ -73,6 +74,10 @@ const LinkButtonList = styled.ul`
     flex-grow: 1;
     padding: 0.75rem;
     box-sizing: border-box;
+
+    @media screen and (min-width: 780px) {
+        display: flex;
+    }
 `;
 
 const LinkButton = styled.a`
@@ -87,7 +92,7 @@ const LinkButton = styled.a`
 
 const RigthLinkList = styled.ul`
     list-style-type: none;
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
@@ -95,6 +100,10 @@ const RigthLinkList = styled.ul`
     margin: 0;
     flex-shrink: 0;
     flex-grow: 0;
+    
+    @media screen and (min-width: 780px) {
+        display: flex;
+    }
 `;
 
 const DownloadButton = styled.a`
