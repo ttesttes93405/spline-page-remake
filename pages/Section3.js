@@ -111,7 +111,7 @@ const cardData = [
 
 function Section3() {
 
-    return (<Section>
+    return (<Section id='features'>
         <Title>Tools that help you express your creativity</Title>
         <Description>
             A solid set of features that will help you create your best designs.

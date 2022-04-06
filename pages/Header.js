@@ -2,10 +2,12 @@
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
+import { ReactSVG } from 'react-svg';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const HeaderContainer = styled.header`
     position: fixed;
-    top: 2rem;
+    top: 0.75rem;
     left: 0;
     right: 0;
     z-index: 10;
@@ -22,8 +24,64 @@ const HeaderContainer = styled.header`
         width: 100%;
     }
 
+    @media screen and (min-width: 780px) {
+        top: 2rem;
+    }
+
 `;
 
+const DropdownTrigger = styled(DropdownMenu.Trigger)`
+
+    height: 40px;
+    width: 40px;
+    padding: 0.75rem;
+    display: flex;
+    border: none;
+    background-color: var(--color-white-005);
+    border-radius: 3.5rem;
+    outline: none;
+    .svg {
+        opacity: 0.6;
+        div {
+            display: flex;
+        }
+    }
+
+    
+    @media screen and (min-width: 780px) {
+        display: none;
+    }
+`;
+
+const DropdownContent = styled(DropdownMenu.Content)`
+    display: flex;
+    flex-direction: column;
+    width: 13rem;
+    padding-top: 1rem;
+    border-radius: 1rem;
+    background-color: rgba(31,32,35, 0.8);
+    z-index: 10;   
+`;
+
+const DropdownItem = styled(DropdownMenu.Item)`
+    display: flex;
+`;
+const DropdownItemLink = styled.a`
+    display: flex;
+    justify-content: space-between;
+    padding: 0.625rem 1.5rem;
+    text-align: left;
+    color: var(--color-white-040);
+    text-transform: capitalize;
+    text-decoration: none;
+    width: 100%;
+
+    .svg {
+        display: flex;
+        opacity: 0.6;
+    
+    }
+`;
 
 const Nav = styled.nav`
     background-color: rgba(18,19,22,0.8);
@@ -130,6 +188,8 @@ const OpenAppButton = styled.a`
     box-sizing: border-box;
     transition: background-color 0.2s ease;
     transition: color 0.2s ease;
+    text-decoration: none;
+    text-align: center;
 
     &:hover {
         color: var(--color-white);
@@ -143,6 +203,11 @@ const OpenAppButton = styled.a`
             background-color: var(--color-blue-dark);
         }
     }
+`;
+
+const DropDownOpenAppButton = styled(OpenAppButton)`
+    margin: 1.5rem;
+    width: 100%
 `;
 
 
@@ -197,6 +262,50 @@ function Header() {
                         <li><DownloadButton href="#download">Download</DownloadButton></li>
                         <li><OpenAppButton href="https://app.spline.design" className={classNames({ 'open-app-button-light': openAppButtonLight })}>Open App</OpenAppButton></li>
                     </RigthLinkList>
+                </li>
+                <li>
+                    <DropdownMenu.Root>
+
+                        <DropdownTrigger>
+                            <ReactSVG src='./src/hamburger.svg' />
+                        </DropdownTrigger>
+
+                        <DropdownContent sideOffset={20} side={'top'} >
+                            <DropdownItem>
+                                <DropdownItemLink href='#features'><span>Features</span></DropdownItemLink>
+                            </DropdownItem>
+                            <DropdownItem>
+                                <DropdownItemLink href='https://discord.gg/M9hNDMqvnw' target='_blank'>
+                                    <span>Community</span>
+                                    <ReactSVG src='./src/arrow-out-2.svg' className='svg' />
+                                </DropdownItemLink>
+                            </DropdownItem>
+                            <DropdownItem>
+                                <DropdownItemLink href='https://twitter.com/splinetool' target='_blank'>
+                                    <span>Twitter</span>
+                                    <ReactSVG src='./src/arrow-out-2.svg' className='svg' />
+                                </DropdownItemLink>
+                            </DropdownItem>
+                            <DropdownItem>
+                                <DropdownItemLink href='https://docs.spline.design/' target='_blank'>
+                                    <span>Docs</span>
+                                    <ReactSVG src='./src/arrow-out-2.svg' className='svg' />
+                                </DropdownItemLink>
+                            </DropdownItem>
+                            <DropdownItem>
+                                <DropDownOpenAppButton href="https://app.spline.design" className='open-app-button-light'>Open App</DropDownOpenAppButton>
+                            </DropdownItem>
+                        </DropdownContent>
+                    </DropdownMenu.Root>
+
+                    {/* <Menu menuButton={(<MenuButton>
+                        <ReactSVG src='./src/hamburger.svg' className='svg' />
+                    </MenuButton>)}>
+                        <MenuItem>Cut</MenuItem>
+                        <MenuItem>Copy</MenuItem>
+                        <MenuItem>Paste</MenuItem>
+                        <button>A</button>
+                    </Menu> */}
                 </li>
             </NavList>
         </Nav>

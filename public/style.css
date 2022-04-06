@@ -55,3 +55,8 @@ body, html {
 *, ::after, ::before {
     box-sizing: border-box;
 }
+
+[data-radix-popper-content-wrapper] {
+    backdrop-filter: blur(24px);
+    border-radius: 1rem;
+}

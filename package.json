@@ -13,8 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@radix-ui/react-dropdown-menu": "^0.1.6",
     "@splinetool/react-spline": "^2.0.0",
     "@splinetool/runtime": "^0.9.23",
+    "@stitches/react": "^1.2.7",
     "classnames": "^2.3.1",
     "next": "^12.1.2",
     "normalize.css": "^8.0.1",
