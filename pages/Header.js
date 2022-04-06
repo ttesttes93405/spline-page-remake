@@ -262,8 +262,6 @@ function Header() {
                         <li><DownloadButton href="#download">Download</DownloadButton></li>
                         <li><OpenAppButton href="https://app.spline.design" className={classNames({ 'open-app-button-light': openAppButtonLight })}>Open App</OpenAppButton></li>
                     </RigthLinkList>
-                </li>
-                <li>
                     <DropdownMenu.Root>
 
                         <DropdownTrigger>
@@ -297,15 +295,6 @@ function Header() {
                             </DropdownItem>
                         </DropdownContent>
                     </DropdownMenu.Root>
-
-                    {/* <Menu menuButton={(<MenuButton>
-                        <ReactSVG src='./src/hamburger.svg' className='svg' />
-                    </MenuButton>)}>
-                        <MenuItem>Cut</MenuItem>
-                        <MenuItem>Copy</MenuItem>
-                        <MenuItem>Paste</MenuItem>
-                        <button>A</button>
-                    </Menu> */}
                 </li>
             </NavList>
         </Nav>
