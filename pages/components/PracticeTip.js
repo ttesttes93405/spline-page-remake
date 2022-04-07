@@ -12,13 +12,15 @@ const PracticeTipContainer = styled.div`
     justify-content: center;
     align-items: center;
     margin: 0 auto 16px;
-    width: 500px;
+    width: 350px;
     max-width: 100%;
     height: 50px;
     background-color: #0004;
     border-radius: 1rem;
     backdrop-filter: blur(24px);
     z-index: 2147480000;
+    font-size: 0.85rem;
+    font-family: SplineSans;
 
     button {
         position: absolute;

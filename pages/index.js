@@ -10,20 +10,21 @@ import Section6 from './Section6';
 import PracticeTipContainer from './components/PracticeTip';
 import 'normalize.css';
 import styled from 'styled-components';
+import HeadContent from './components/HeadContent';
 
 const Main = styled.main`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%
+    width: 100%;
 `;
 
 
 function App() {
 
     return (<>
-
+        <HeadContent />
         <Header />
         <Main>
             <Section1 />

@@ -57,6 +57,6 @@ body, html {
 }
 
 [data-radix-popper-content-wrapper] {
+    -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(24px);
-    border-radius: 1rem;
 }

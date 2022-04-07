@@ -207,7 +207,7 @@ const OpenAppButton = styled.a`
 
 const DropDownOpenAppButton = styled(OpenAppButton)`
     margin: 1.5rem;
-    width: 100%
+    width: 100%;
 `;
 
 
