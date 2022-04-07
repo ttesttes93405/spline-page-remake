@@ -7,6 +7,7 @@ import Section3 from './Section3';
 import Section4 from './Section4';
 import Section5 from './Section5';
 import Section6 from './Section6';
+import PracticeTipContainer from './components/PracticeTip';
 import 'normalize.css';
 import styled from 'styled-components';
 
@@ -33,6 +34,7 @@ function App() {
             <Section6 />
         </Main>
         <Footer />
+        <PracticeTipContainer />
 
     </>)
 }
