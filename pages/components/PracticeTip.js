@@ -17,6 +17,7 @@ const PracticeTipContainer = styled.div`
     height: 50px;
     background-color: #0004;
     border-radius: 1rem;
+    -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(24px);
     z-index: 2147480000;
     font-size: 0.85rem;

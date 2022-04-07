@@ -37,6 +37,7 @@ const DragTip = styled.div`
     color: var(--color-white-040);
     font-size: .875rem;
     background: #191a1ee0;
+    -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(24px);
 `
 

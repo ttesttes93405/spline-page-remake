@@ -90,6 +90,7 @@ const Nav = styled.nav`
     height: 3.5rem;
     border-radius: 3.5rem;
     padding: 0.75rem;
+    -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(24px);
     display: flex;
     justify-content: center;
