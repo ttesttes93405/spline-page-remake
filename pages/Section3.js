@@ -10,10 +10,11 @@ const Section = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
-    padding-top: 7.5rem;
-    padding-bottom: 3.5rem;
-
+    padding: 7.5rem 0 3.5rem;
+    
+    @media screen and (max-width: 1080px) {
+        padding: 7.5rem 1rem 3.5rem;
+    }
 `;
 
 const CardContainer = styled.ul`
